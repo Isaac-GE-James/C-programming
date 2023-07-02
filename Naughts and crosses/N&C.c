@@ -2,15 +2,15 @@
 #include <time.h>
 
 // why doesnt C have bools ?
-const int TRUE = 1;
-const int FALSE = 0;
+#define TRUE 1
+#define FALSE 0
 
-const char PLAYER = 'X';
-const char COMPUTER = 'O';
+#define PLAYER 'X';
+#define COMPUTER 'O';
 
 char game_board[3][3];
 
-char winner = ' ';
+char winner;
 
 void _board_setup();
 void _draw_board();
@@ -21,27 +21,35 @@ char _check_winner();
 int _random_number(int min, int max);
 
 int main(){
+    char replay_input;
 
-    _board_setup();
+    do {
 
-    do { 
-        
-        _draw_board();
+        winner = ' ';
+        _board_setup();
 
-        _player_move();
-        winner = _check_winner();
-        if (winner!=' ') {break;}
+        do { 
+            
+            _player_move(); 
+            _draw_board();
+            winner = _check_winner();
+            if (winner!=' ') {break;}
 
-        _computer_move();
-        winner = _check_winner();
-        if (winner!=' ') {break;}
+            _computer_move();
+            _draw_board();
+            winner = _check_winner();
+            if (winner!=' ') {break;}
 
-    } while (winner==' ');
+        } while (winner==' ');
 
-    _draw_board();
 
-    if (winner=='d'){printf("It's a draw!");}
-    else {printf("%c is the winner!", winner);}
+        if (winner=='d'){printf("It's a draw!\n");}
+        else {printf("%c is the winner!\n", winner);}
+
+        printf("Do you want to play again (Y/N): ");
+        scanf(" %c", &replay_input); // why does the space before the %c fix the issue of the input being skiped ? i havent had this issue anywhere else ?
+
+    } while (replay_input=='Y'||replay_input=='y');
     
     return 0;
 }
