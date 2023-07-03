@@ -3,8 +3,8 @@
 
 // why doesnt C have bools ?
 typedef enum Bool {
-    TRUE,
-    FALSE
+    FALSE,
+    TRUE
 } Bool; // enum's are good for making a bool data type, that work like other programs. 
 
 #define PLAYER 'X';
