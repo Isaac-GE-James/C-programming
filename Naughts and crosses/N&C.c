@@ -2,8 +2,10 @@
 #include <time.h>
 
 // why doesnt C have bools ?
-#define TRUE 1
-#define FALSE 0
+typedef enum Bool {
+    TRUE,
+    FALSE
+} Bool; // enum's are good for making a bool data type, that work like other programs. 
 
 #define PLAYER 'X';
 #define COMPUTER 'O';
@@ -128,4 +130,4 @@ char _check_winner(){
     return 'd'; 
 }
 
-int _random_number(int min, int max){return (clock()%(max+1))+min;}  // wanted to have a go at writng a random number genorator function           
+int _random_number(int min, int max){return (time(NULL)%(max+1))+min;}  // wanted to have a go at writng a random number genorator function           
