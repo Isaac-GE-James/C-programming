@@ -1,2 +1,2 @@
 # C-programming
- Repository for learning C 
+ Repository for learning C.
